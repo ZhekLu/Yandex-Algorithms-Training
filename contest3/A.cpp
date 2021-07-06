@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <algorithm>
-#include <vector>
+#include <set>
 using namespace std;
 
 int main()
@@ -10,12 +9,10 @@ int main()
     if(fin.is_open())
     {
         int num;
-        vector<int> arr; 
+        set<int> arr; 
         while(fin >> num)
-        {
-            if(find(arr.begin(), arr.end(), num) == arr.end())
-                arr.push_back(num);
-        }
+            arr.insert(num); 
+        
         fin.close();
         cout << arr.size();
     }
