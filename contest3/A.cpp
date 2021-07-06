@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <set>
+#include <unordered_set>
 using namespace std;
 
 int main()
@@ -9,9 +9,10 @@ int main()
     if(fin.is_open())
     {
         int num;
-        set<int> arr; 
+        unordered_set<int> arr; 
         while(fin >> num)
-            arr.insert(num); 
+            if(arr.find(num) == arr.end())
+                arr.insert(num); 
         
         fin.close();
         cout << arr.size();
