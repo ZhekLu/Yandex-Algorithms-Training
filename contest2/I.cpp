@@ -1,19 +1,6 @@
 #include <iostream>
 using namespace std;
 
-void show(int** arr, int N, int M)
-{
-    cout << "================" << endl;
-    for(int i = 0; i < N; i++)
-    {
-        for(int j = 0; j < M; j++)
-        {
-            cout << arr[i][j] << " ";
-        }
-        cout << endl;
-    }
-    cout << "================" << endl;
-}
 int main()
 {
     int N, M, K;
@@ -29,7 +16,7 @@ int main()
         for(int j = 0; j < M; j++)
             field[i][j] = 0;
     }
-    // show(field, N, M);
+
     for(int i = 0; i < K; i++)
     {
         int x, y;
@@ -38,7 +25,6 @@ int main()
         for(int k = 0; k < sidesq; k++)
             if(field[x + checkX[k]][y + checkY[k]] != -1) 
                 field[x + checkX[k]][y + checkY[k]]++;
-                // show(field, N, M);
             
                 
     }
