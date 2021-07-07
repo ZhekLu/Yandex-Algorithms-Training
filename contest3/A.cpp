@@ -11,8 +11,7 @@ int main()
         int num;
         unordered_set<int> arr; 
         while(fin >> num)
-            if(arr.find(num) == arr.end())
-                arr.insert(num); 
+            arr.insert(num); 
         
         fin.close();
         cout << arr.size();
