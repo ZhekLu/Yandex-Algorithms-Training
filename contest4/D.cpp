@@ -1,8 +1,38 @@
-#include <unordered_map>
 #include <iostream>
-#include <string>
 using namespace std; 
 
+int main()
+{
+    short n;
+    cin >> n;
+    int* keys = new int [n + 1];
+    for(int i = 1; i <= n; i++)
+    {
+        int maxQ;
+        cin >> maxQ;
+        keys[i] = maxQ;
+    }
+
+    int pushQ;
+    cin >> pushQ;
+    for(int i = 0; i < pushQ; i++)
+    {
+        int key;
+        cin >> key;
+        keys[key]--;
+    }
+
+    for(int i = 1; i <= n; i++)
+    {
+        if(keys[i] < 0)
+            cout << "YES\n";
+        else  
+            cout << "NO\n";
+    }
+}
+
+/*
+//with std::map
 int main()
 {
     int quantity;
@@ -32,7 +62,7 @@ int main()
             cout << "NO\n";
     }
 }
-
+*/
 /*
 int main()
 {
