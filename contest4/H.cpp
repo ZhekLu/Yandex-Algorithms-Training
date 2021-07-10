@@ -19,6 +19,17 @@ bool isInfluences(const unordered_map<char, int>& word, const unordered_map<char
     return false;
 }
 
+int CheckSymbol(const unordered_map<char, int>& word, unordered_map<char, int>& str, const char& symb, int mode)
+{
+    int res = 0;
+    if(isInfluences(word, str, symb))
+        res--;
+    str[symb] += mode;
+    if(isInfluences(word, str, symb))
+        res++;
+    return res;
+}
+
 int main()
 {
     int g, sLen, intersection = 0;
@@ -48,19 +59,11 @@ int main()
     for(int i = 1; i <= sLen - g; i++)
     {
         //delete the last sym
-        if(isInfluences(W, Str, S[i - 1]))
-            sameLetters--;
-        Str[S[i - 1]]--;
-        if(isInfluences(W, Str, S[i - 1]))
-            sameLetters++;
+        sameLetters += CheckSymbol(W, Str, S[i - 1], -1);
         
         //add a new sym
-        if(isInfluences(W, Str, S[i + g - 1]))
-            sameLetters--;
-        Str[S[i + g - 1]]++;
-        if(isInfluences(W, Str, S[i + g - 1]))
-            sameLetters++;
-            
+        sameLetters += CheckSymbol(W, Str, S[i + g - 1], 1);
+
         if(sameLetters == lettersCount)
             intersection++;
     }
