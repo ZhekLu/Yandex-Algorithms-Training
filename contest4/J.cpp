@@ -13,6 +13,13 @@ void toLower(char* str)
             str[i] = tolower(str[i]);
 }
 
+void toLower(string& str)
+{
+    for(int i = 0; i < str.length(); i++)
+        if(isupper(str[i]))
+            str[i] = tolower(str[i]);
+}
+
 bool StartsWithDigit(const char* w)
 {
     if(w[0] >= '0' && w[0] <= '9')
@@ -36,19 +43,26 @@ int main()
         isSensitive = line == "yes";
         fin >> line;
         canStartWithNum = line == "yes";
+        for(int i = 0; i < n; i++)
+        {
+            fin >> line;
+            if(!isSensitive)
+                toLower(line);
+            keyWords.insert(line);
+        }
         unsigned pos = 0;
         while(fin.getline(cline, 128))
         {
             char* word = strtok(cline, " ,.;\"}{)(+=-%");
             while(word)
             {
+                if(!isSensitive)
+                    toLower(word);
                 if(keyWords.find(word) != keyWords.end() || (StartsWithDigit(word) && !canStartWithNum))
                 {
                     word = strtok(NULL, " ,.;\"}{)(+=-%&");
                     continue;
                 }
-                if(!isSensitive)
-                    toLower(word);
                 auto lib = progText.find(word);
                 int currCount = 1; 
                 if(lib != progText.end())
