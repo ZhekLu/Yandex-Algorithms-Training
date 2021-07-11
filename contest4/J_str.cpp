@@ -8,7 +8,15 @@ using namespace std;
 
 void toLower(char* str)
 {
-    for(int i = 0; i < sizeof(str) - 1; i++)
+    int len = strlen(str);
+    for(int i = 0; i < len; i++)
+        if(isupper(str[i]))
+            str[i] = tolower(str[i]);
+}
+
+void toLower(string& str)
+{
+    for(int i = 0; i < str.length(); i++)
         if(isupper(str[i]))
             str[i] = tolower(str[i]);
 }
@@ -18,6 +26,15 @@ bool StartsWithDigit(const char* w)
     if(w[0] >= '0' && w[0] <= '9')
         return true;
     return false;
+}
+
+bool CanBeIter(const char* w)
+{
+    int len = strlen(w);
+    for(int i = 0; i < len; i++)
+        if(w[i] < '0' || w[i] > '9')
+            return true;
+    return false; 
 }
 
 int main()
@@ -35,20 +52,27 @@ int main()
         isSensitive = line == "yes";
         fin >> line;
         canStartWithNum = line == "yes";
+        for(int i = 0; i < n; i++)
+        {
+            fin >> line;
+            if(!isSensitive)
+                toLower(line);
+            keyWords.insert(line);
+        }
         unsigned pos = 0;
         while(getline(fin, line))
         {
             char* cline = line.data();
-            char* word = strtok(cline, " ,.;\"}{)(+=-%");
+            char* word = strtok(cline, " !\"#$%&'()*+,-./:;<=>?@[\\]^`{|}~");
             while(word)
             {
-                if(keyWords.find(word) != keyWords.end() || (StartsWithDigit(word) && !canStartWithNum))
-                {
-                    word = strtok(NULL, " ,.;\"}{)(+=-%&");
-                    continue;
-                }
                 if(!isSensitive)
                     toLower(word);
+                if(keyWords.find(word) != keyWords.end() || (StartsWithDigit(word) && !canStartWithNum) || !(CanBeIter(word)))
+                {
+                    word = strtok(NULL, " !\"#$%&'()*+,-./:;<=>?@[\\]^`{|}~");
+                    continue;
+                }
                 auto lib = progText.find(word);
                 int currCount = 1; 
                 if(lib != progText.end())
@@ -68,7 +92,7 @@ int main()
                     commonWords.insert(word);
                 }
                 pos++;
-                word = strtok(NULL, " ,.;\"}{)(+=-%");
+                word = strtok(NULL, " !\"#$%&'()*+,-./:;<=>?@[\\]^`{|}~");
             }
         }
     	fin.close();
