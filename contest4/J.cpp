@@ -29,7 +29,7 @@ bool StartsWithDigit(const char* w)
 
 int main()
 {
-    fstream fin("input.txt");
+    ifstream fin("input.txt");
     if(fin.is_open())
     {
         bool isSensitive, canStartWithNum;
