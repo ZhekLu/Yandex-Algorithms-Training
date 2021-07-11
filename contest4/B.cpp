@@ -16,5 +16,6 @@ int main()
             cout << bookMap[word] << " ";
             bookMap[word]++;
         }
+        fin.close();
     }
 }

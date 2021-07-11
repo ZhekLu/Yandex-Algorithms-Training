@@ -14,7 +14,7 @@ int main()
        	long unsigned quantity; 
         while(fin >> name >> product >> quantity)
             customerList[name][product] += quantity;
-            
+        fin.close();    
         for(auto& customer : customerList)
         {
             cout << customer.first << ":" << endl;

@@ -55,6 +55,7 @@ int main()
                 break;
             }
         }
+        fin.close();
         cout << mistakesCount;
     }
 }

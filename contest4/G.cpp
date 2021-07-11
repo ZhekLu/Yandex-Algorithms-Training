@@ -51,5 +51,6 @@ int main()
                 }
             }
         }
+        fin.close();
     }
 }
