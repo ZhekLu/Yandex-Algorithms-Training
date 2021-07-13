@@ -27,4 +27,5 @@ int main()
         cin >> carNums[i];
 
     cout << SumOccur(carNums, N, K);
+    delete[] carNums;
 }

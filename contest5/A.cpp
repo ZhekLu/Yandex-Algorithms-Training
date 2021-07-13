@@ -33,4 +33,5 @@ int main()
 
     auto[minDif, shirtsInd, pantsInd] = MinDif(shirts, shirtsQ, pants, pantsQ);
     cout << shirts[shirtsInd] << " " << pants[pantsInd];
+    delete[] shirts, pants;
 }

@@ -32,4 +32,5 @@ int main()
         }
     } 
     cout << sumQ;
+    delete[] carNums, prefixNums;
 }
