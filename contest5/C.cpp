@@ -1,23 +1,11 @@
 #include <iostream>
 using namespace std;
 
-int* MakePositivePrefix(const int* from, int size)
+int* MakePrefix(const int* from, int size, int mode)
 {
     int* prefix = new int[size + 1]{0};
     for(int i = 1; i <= size; i++)
-        if (from[i - 1] > 0)
-            prefix[i] = prefix[i - 1] + from[i - 1];
-        else  
-            prefix[i] = prefix[i - 1];
-        
-    return prefix;
-}
-
-int* MakeNegativePrefix(const int* from, int size)
-{
-    int* prefix = new int[size + 1]{0};
-    for(int i = 1; i <= size; i++)
-        if (from[i - 1] < 0)
+        if (mode * from[i - 1] > 0)
             prefix[i] = prefix[i - 1] + from[i - 1];
         else  
             prefix[i] = prefix[i - 1];
@@ -43,8 +31,8 @@ int main()
         cin >> points[i] >> points[i]; // just skip x-coo
     
     int* heightScale = MakeHeightScale(points, pointsNum);
-    int* posPrefixHeight = MakePositivePrefix(heightScale, pointsNum);
-    int* negPrefixHeight = MakeNegativePrefix(heightScale, pointsNum);
+    int* posPrefixHeight = MakePrefix(heightScale, pointsNum, 1);
+    int* negPrefixHeight = MakePrefix(heightScale, pointsNum, -1);
 
     cin >> trailNum;
     int* answer = new int[trailNum]; 
