@@ -10,7 +10,7 @@ public:
     void insert(int key);
     void clear();
     int getHeight() const;
-    bool isBalanced();
+    bool isBalanced() const;
 private:
     // node struct
     struct Node
@@ -27,6 +27,7 @@ private:
             this->height = (hleft > hright ? hleft : hright) + 1;
         }
         int balanceFactor();
+        bool TraversePostorderBalance(bool balance = true);
     };
     // elements
     Node* root = nullptr;
@@ -60,9 +61,9 @@ int Tree::getHeight() const
     return root->height + 1;
 }
 
-bool Tree::isBalanced()
+bool Tree::isBalanced() const
 {
-    return abs(root->balanceFactor()) < 2;
+    return root->TraversePostorderBalance();
 }
 
 void Tree::insert(int key, Node* currRoot)
@@ -89,6 +90,19 @@ int Tree::Node::balanceFactor()
     int hleft = (this->left) ? this->left->height : -1;
     int hright = (this->right) ? this->right->height : -1;
     return hright - hleft;
+}
+
+bool Tree::Node::TraversePostorderBalance(bool balance)
+{
+    if(!balance)
+        return balance;
+    if(this->left)
+        balance = this->left->TraversePostorderBalance();
+    if(balance && this->right)
+        balance = this->right->TraversePostorderBalance();
+    if(balance)
+        balance = abs(this->balanceFactor()) < 2;
+    return balance;
 }
 
 void Tree::clear(Node* currRoot)
