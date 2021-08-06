@@ -10,7 +10,7 @@ class FamilyTree
 {
 public:
     void insert(const string& parent, const string& child);
-    void TraverseInorderChildrenCount();
+    void TraverseInorderLevelCount();
 private:
     unordered_map<string, string> child_parent; 
     unordered_map<string, vector<string>> parent_children; 
@@ -29,7 +29,7 @@ int main()
             ftree.insert(parent, child);
         }   
     }
-    ftree.TraverseInorderChildrenCount();
+    ftree.TraverseInorderLevelCount();
 }
 
 void FamilyTree::insert(const string& parent, const string& child)
@@ -38,7 +38,7 @@ void FamilyTree::insert(const string& parent, const string& child)
     parent_children[parent].push_back(child);
 }
 
-void FamilyTree::TraverseInorderChildrenCount()
+void FamilyTree::TraverseInorderLevelCount()
 {
     vector<string> BFS = [&]
     {
