@@ -1,6 +1,7 @@
 ﻿# Yandex-Algorithms-Training
 [![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://forthebadge.com)
 
+```html
 <pre>
     <code>
 
@@ -32,3 +33,4 @@
 </html>
     </code>
 </pre>
+```
