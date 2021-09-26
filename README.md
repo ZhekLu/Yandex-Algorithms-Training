@@ -1,5 +1,6 @@
 ﻿# Yandex-Algorithms-Training 1.0
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;800&display=swap" rel="stylesheet">
 	<style>
@@ -28,3 +29,4 @@
 <body>
     <a href="https://yandex.ru/yaintern/algorithm-training_1" class="button">Yandex Algorithms Training</a>
 </body>
+</html>
