@@ -1,5 +1,6 @@
-﻿# Yandex-Algorithms-Training 1.0
-<!DOCTYPE html>
+﻿# Yandex-Algorithms-Training
+[![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://yandex.ru/yaintern/algorithm-training_1)
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;800&display=swap" rel="stylesheet">
@@ -29,4 +30,4 @@
 <body>
     <a href="https://yandex.ru/yaintern/algorithm-training_1" class="button">Yandex Algorithms Training</a>
 </body>
-</html>
+</html> -->
